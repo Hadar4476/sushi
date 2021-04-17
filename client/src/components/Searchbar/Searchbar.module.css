@@ -1,0 +1,49 @@
+.SearchBar {
+  z-index: 1;
+  background-color: black;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  transition-duration: 100ms;
+}
+.SearchBar > input {
+  width: 100%;
+  margin: 0 0.5rem;
+  border: none;
+  outline: none;
+  background-color: black;
+  color: white;
+}
+.SearchBar > input::selection {
+  color: white;
+  background-color: #b31217;
+}
+.SearchBar > input::placeholder {
+  color: rgb(195, 195, 195);
+}
+.SearchBar > i {
+  margin-right: 0.5rem;
+  cursor: pointer;
+  color: white;
+}
+
+.RemoveBottomBorderRadius {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  box-shadow: none;
+  border-bottom: 1px solid silver;
+}
+
+@media (min-width: 700px) {
+  .SearchBar {
+    position: relative;
+    width: 700px;
+    margin: 0.5rem auto;
+    border-radius: 30px;
+    z-index: 1;
+    height: 3rem;
+  }
+}

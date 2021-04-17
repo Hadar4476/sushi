@@ -1,0 +1,94 @@
+.Navbar {
+  height: 4rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition-duration: 200ms;
+  border-bottom: 1px solid silver;
+}
+
+.Navbar *::selection {
+  background-color: transparent;
+}
+
+.Logo {
+  color: #24292e;
+  font-family: 'Monofett', cursive;
+  transition-duration: 200ms;
+  padding-left: 0.5rem;
+  padding-top: 0.5rem;
+  width: 100%;
+  z-index: 2;
+}
+
+.Logo:hover {
+  color: black;
+}
+
+.Logo > h1 {
+  font-size: 3.5rem;
+  width: 150px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.Options {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-right: 0.5rem;
+}
+
+.UserIcon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 1.3rem;
+  color: white;
+  font-weight: bold;
+  border-radius: 100%;
+  cursor: pointer;
+  transition-duration: 200ms;
+  margin-left: 0.5rem;
+  background-color: black;
+}
+
+.CartIcon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  padding-top: 0.25rem;
+  padding-right: 0.25rem;
+  border-radius: 100%;
+  cursor: pointer;
+  transition-duration: 200ms;
+  position: relative;
+}
+
+.Notfication {
+  position: absolute;
+  top: 0;
+  left: 1.5rem;
+  font-size: 0.8rem;
+  background-color: #c31010;
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.CartIcon:hover {
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
+}

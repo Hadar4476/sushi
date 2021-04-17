@@ -9,6 +9,7 @@ const path = require('path');
 const auth = require('./routes/auth');
 const users = require('./routes/users');
 const dishTypes = require('./routes/dishTypes');
+const orders = require('./routes/orders');
 
 dotENV.config();
 
@@ -24,11 +25,13 @@ mongoose
   })
   .catch((error) => console.log(error));
 
+app.use(express.static('public'));
 app.use(express.json());
 app.use(cors());
 app.use('/users', users);
 app.use('/auth', auth);
 app.use('/dishTypes', dishTypes);
+app.use('/orders', orders);
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));

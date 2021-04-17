@@ -1,0 +1,57 @@
+.Input {
+  margin-top: 40px;
+  margin-bottom: 20px;
+  width: 100%;
+  border-bottom: 2px solid #adadad;
+  position: relative;
+  display: flex;
+}
+
+.Input > input {
+  width: 90%;
+  border: none;
+  height: 40px;
+  font-size: 1.2rem;
+  outline: none;
+}
+.Input > input::selection {
+  color: white;
+  background-color: #c31010;
+}
+
+.Icon {
+  position: absolute;
+  right: 2%;
+  align-self: center;
+  font-size: 1.8rem;
+}
+
+.Label {
+  font-weight: bold;
+  color: #adadad;
+  position: absolute;
+  left: 0;
+  top: 20px;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  transition-duration: 200ms;
+}
+
+.InputBorderBottom {
+  position: absolute;
+  height: 2px;
+  width: 0%;
+  left: 0;
+  top: 99%;
+  background: #c31010;
+  transition-duration: 200ms;
+}
+
+.Input > input:focus ~ .Label {
+  top: -10px;
+  color: #c31010;
+}
+
+.Input > input:focus ~ .InputBorderBottom {
+  width: 100%;
+}

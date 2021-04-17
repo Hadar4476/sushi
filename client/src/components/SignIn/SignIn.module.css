@@ -1,0 +1,109 @@
+.DarkBox {
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.SignIn {
+  position: fixed;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  justify-content: space-between;
+}
+
+.Header {
+  display: flex;
+  border-bottom: 1px solid silver;
+  align-items: center;
+  text-align: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.Header > i {
+  position: absolute;
+  top: 10%;
+  left: 2%;
+  font-size: 2rem;
+}
+
+.Header > h1 {
+  margin: 1rem auto;
+  font-family: 'Fredoka One', cursive;
+  color: #c31010;
+  font-size: 1.6rem;
+}
+
+.FormGroupsWrapper {
+  margin-top: 3rem;
+  margin-bottom: auto;
+  padding: 0 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.Confirm {
+  margin-top: 1rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  margin-bottom: 1rem;
+  width: 95%;
+  background-color: #c31010;
+  height: 8rem;
+  border: 2px solid black;
+  color: white;
+  font-size: 1.2rem;
+  transition-duration: 200ms;
+  outline: none;
+}
+
+.Confirm:disabled {
+  color: silver;
+  background-color: rgba(133, 12, 12, 0.966);
+}
+
+.Confirm:focus {
+  outline: none;
+}
+
+@media (min-width: 500px) {
+  .SignIn {
+    width: 500px;
+    height: 500px;
+    top: 6rem;
+    border-radius: 0.5rem;
+  }
+  .Confirm {
+    height: 8rem;
+    width: 95%;
+    margin: 0.5rem auto;
+  }
+}
+
+@media (min-width: 900px) {
+  .SignIn {
+    top: 10rem;
+    width: 600px;
+  }
+  .Confirm {
+    height: 10rem;
+    width: 97%;
+  }
+}

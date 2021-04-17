@@ -1,0 +1,78 @@
+.MenuNavbar {
+  width: 100%;
+  display: flex;
+  background-color: #b31217;
+  padding: 0.5rem;
+  justify-content: space-between;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  z-index: 2;
+  height: 3rem;
+  align-items: center;
+}
+.MenuNavbar::-webkit-scrollbar {
+  display: none;
+}
+
+.Item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 1.2rem;
+  color: white;
+  font-family: 'Permanent Marker', cursive;
+  margin-right: 1rem;
+  padding-right: 1rem;
+  cursor: pointer;
+}
+
+.Item > img {
+  width: 25px;
+  height: 25px;
+  object-fit: contain;
+  margin-right: 0.5rem;
+}
+
+.Line {
+  height: 0.15rem;
+  width: 0%;
+  background-color: transparent;
+  border-radius: 2rem;
+  transition-duration: 200ms;
+}
+
+.Active {
+  width: 80%;
+  background-color: white;
+}
+
+@media (min-width: 400px) {
+  .Item {
+    font-size: 1rem;
+  }
+
+  .Item > img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    margin-right: 0.5rem;
+  }
+}
+
+@media (min-width: 500px) {
+  .MenuNavbar {
+    justify-content: space-around;
+  }
+}
+
+@media (min-width: 700px) {
+  .MenuNavbar {
+    justify-content: center;
+  }
+}
+@media (min-width: 768px) {
+  .MenuNavbar {
+    height: 3.9rem;
+  }
+}

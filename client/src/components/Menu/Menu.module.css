@@ -1,0 +1,18 @@
+.Menu {
+  overflow: hidden;
+}
+
+.Body {
+  width: 100%;
+}
+
+.MenuItemWrapper::-webkit-scrollbar {
+  display: none;
+}
+
+@media (min-width: 700px) {
+  .Body {
+    width: 700px;
+    margin: 0 auto;
+  }
+}

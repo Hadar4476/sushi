@@ -1,0 +1,113 @@
+.CartItem {
+  display: flex;
+  display: flex;
+  justify-content: space-between;
+  height: 6rem;
+  margin: 0.25rem 0;
+  border-bottom: 1px solid black;
+}
+
+.Image {
+  width: 30%;
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+}
+
+.Image > img {
+  width: 100%;
+  object-fit: contain;
+}
+
+.Info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  text-align: left;
+  width: 60%;
+  padding-left: 1rem;
+}
+
+.Name {
+  color: black;
+  font-size: 1.5rem;
+  font-family: 'Fredoka One', cursive;
+}
+
+.Price {
+  font-family: 'Anton', sans-serif;
+  color: #c31010;
+  font-size: 1.2rem;
+}
+
+.Dollar {
+  color: black;
+  font-size: 1rem;
+}
+
+.Manager {
+  display: flex;
+  flex-direction: column;
+  width: 10%;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.Trash {
+  font-size: 1.5rem;
+  color: #c31010;
+  margin-right: 0.4rem;
+  cursor: pointer;
+}
+
+.AmountManager {
+  display: flex;
+  justify-content: center;
+  align-self: flex-end;
+  width: 6rem;
+}
+
+.Amount {
+  font-family: 'Anton', sans-serif;
+  margin-top: 0.4rem;
+  font-size: 1.2rem;
+  width: 33%;
+}
+
+.Icon {
+  background-color: none;
+  outline: none;
+  border-radius: 100%;
+  font-size: 1.8rem;
+  border: none;
+  transition-duration: 200ms;
+}
+.Icon:hover {
+  color: #c31010;
+}
+
+.Icon:disabled {
+  color: #586069;
+  cursor: default;
+}
+
+@media (min-width: 300px) {
+  .Image > img {
+    width: 100px;
+  }
+}
+
+@media (min-width: 500px) {
+  .Image {
+    width: 20%;
+  }
+  .Info {
+    width: 70%;
+  }
+}
+
+@media (min-width: 768px) {
+  .CartItem {
+    padding: 0 1rem;
+  }
+}

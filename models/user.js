@@ -23,17 +23,13 @@ const userSchema = new mongoose.Schema(
       minlength: 6,
       maxlength: 1024,
     },
-    iconBGColor: {
-      type: String,
-      required: true,
-    },
   },
   { versionKey: false }
 );
 
 userSchema.methods.genAuthToken = function () {
   const token = jwt.sign(
-    { _id: this._id, username: this.username, iconBGColor: this.iconBGColor },
+    { _id: this._id, username: this.username },
     process.env.JWT_KEY
   );
   return token;

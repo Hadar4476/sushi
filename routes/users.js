@@ -5,46 +5,6 @@ const { User } = require('../models/user');
 const _ = require('lodash');
 const router = express.Router();
 
-router.patch('/changePassword', auth, async (req, res) => {
-  const { changePassword } = req.body;
-  const { _id } = req.user;
-  const { password } = await User.findOne({ _id: _id });
-  const isSamePassword = await bcrypt.compare(changePassword, password);
-  if (isSamePassword) {
-    return res.status(400).send('Please update your password to a new one');
-  }
-  const salt = await bcrypt.genSalt(10);
-  const bcryptPassword = await bcrypt.hash(changePassword, salt);
-  const user = await User.findByIdAndUpdate(
-    { _id: _id },
-    { password: bcryptPassword }
-  );
-  await user.save();
-  res.send(_.pick(user, ['id', 'username', 'email', 'iconBGColor']));
-});
-
-router.patch('/changeEmail', auth, async (req, res) => {
-  const { changeEmail } = req.body;
-  const { _id } = req.user;
-  const { email } = await User.findById(_id).select('-password');
-  if (email === changeEmail) {
-    return res.status(400).send('Please update your email to a new one');
-  }
-  const isSameEmail = await User.findOne({
-    email: changeEmail,
-  }).select('-password');
-  if (isSameEmail) {
-    return res.status(400).send('This email is already taken');
-  }
-  const user = await User.findByIdAndUpdate(
-    { _id: _id },
-    { email: changeEmail }
-  );
-  await user.save();
-  user.email = changeEmail;
-  res.send(_.pick(user, ['id', 'username', 'email', 'iconBGColor']));
-});
-
 router.get('/me', auth, async (req, res) => {
   const { _id } = req.user;
   const user = await User.findById(_id).select('-password');
@@ -54,11 +14,15 @@ router.get('/me', auth, async (req, res) => {
 
 router.post('/', async (req, res) => {
   const { email, username } = req.body;
-  const isUsernameUnique = await User.findOne({ username: username });
+  const isUsernameUnique = await User.findOne({
+    username: { $regex: new RegExp('^' + username.toLowerCase(), 'i') },
+  });
   if (isUsernameUnique) {
     return res.status(400).send('Username is already in use');
   }
-  const isEmailUnique = await User.findOne({ email: email });
+  const isEmailUnique = await User.findOne({
+    email: { $regex: new RegExp('^' + email.toLowerCase(), 'i') },
+  });
   if (isEmailUnique) {
     return res.status(400).send('Email is already in use');
   }
@@ -66,7 +30,7 @@ router.post('/', async (req, res) => {
   const salt = await bcrypt.genSalt(10);
   user.password = await bcrypt.hash(user.password, salt);
   await user.save();
-  res.send(_.pick(user, ['id', 'username', 'email', 'iconBGColor']));
+  res.send(_.pick(user, ['id', 'username', 'email']));
 });
 
 module.exports = router;

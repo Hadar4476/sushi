@@ -1,0 +1,10 @@
+.Footer {
+  color: white;
+  text-align: center;
+  font-size: 1.5rem;
+  padding: 2rem;
+  transition-duration: 200ms;
+  font-weight: 600;
+  font-family: 'Permanent Marker', cursive;
+  margin-top: 3rem;
+}
