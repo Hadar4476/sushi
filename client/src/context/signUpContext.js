@@ -15,7 +15,7 @@ export const SignUpContext = React.createContext({
   onSignUpFormSubmit: () => {},
 });
 
-export default (props) => {
+const SignUpContextProvider = (props) => {
   const [formModalState, setFormModalState] = useState({
     username: {
       elementType: 'input',
@@ -104,3 +104,5 @@ export default (props) => {
     </SignUpContext.Provider>
   );
 };
+
+export default SignUpContextProvider;
