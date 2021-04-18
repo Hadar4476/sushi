@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const url = 'https://hadar-sushi-project.herokuapp.com';
+export const url = 'http://localhost:3006';
 
 const instance = axios.create({
   baseURL: url,

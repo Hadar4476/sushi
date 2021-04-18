@@ -75,7 +75,7 @@
 }
 
 .Icon {
-  background-color: none;
+  background-color: transparent;
   outline: none;
   border-radius: 100%;
   font-size: 1.8rem;
