@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router';
 
+import $ from 'jquery';
 import * as actions from '../../store/actions';
 
 import classes from './MyOrders.module.css';
@@ -14,6 +15,10 @@ const MyOrders = (props) => {
   const [myOrdersState, setMyOrdersState] = useState([]);
 
   const history = useHistory();
+
+  useEffect(() => {
+    $(window).scrollTop(0);
+  }, []);
 
   useEffect(() => {
     onInitMyOrders();

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 
+import $ from 'jquery';
 import * as actions from '../../store/actions';
 
 import classes from './Menu.module.css';
@@ -14,6 +15,10 @@ const Menu = (props) => {
   const { dishTypes, onInitSushiTypes } = props;
 
   const [dishTypesState, setDishTypesState] = useState([]);
+
+  useEffect(() => {
+    $(window).scrollTop(0);
+  }, []);
 
   useEffect(() => {
     onInitSushiTypes();
