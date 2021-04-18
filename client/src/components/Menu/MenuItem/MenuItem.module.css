@@ -9,12 +9,12 @@
 }
 
 .MenuItem {
+  position: relative;
   display: flex;
   justify-content: space-between;
   cursor: pointer;
   max-height: 5rem;
   transition: max-height 0.2s ease-out;
-  position: relative;
 }
 
 .Expand {

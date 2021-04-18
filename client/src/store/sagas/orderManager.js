@@ -16,6 +16,7 @@ export function* submitOrderSaga({ order }) {
       });
       if (data) {
         yield put(actions.submitOrderSuccess());
+        yield put(actions.addOrderToMyOrders(data));
       }
     } catch (error) {
       return;

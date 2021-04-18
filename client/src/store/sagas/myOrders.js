@@ -16,7 +16,7 @@ export function* initMyOrdersSaga(action) {
       });
       yield put(actions.initMyOrdersSuccess(data));
     } catch (error) {
-      return;
+      yield put(actions.initMyOrdersFail(error.response.data));
     }
   }
 }

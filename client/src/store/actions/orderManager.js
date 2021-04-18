@@ -102,3 +102,10 @@ export const submitOrderSuccess = () => {
     type: actionTypes.SUBMIT_ORDER_SUCCESS,
   };
 };
+
+export const orderAgain = (cart) => {
+  return {
+    type: actionTypes.ORDER_AGAIN,
+    cart: cart,
+  };
+};

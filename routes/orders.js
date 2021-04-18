@@ -7,6 +7,7 @@ const moment = require('moment');
 router.get('/', auth, async (req, res) => {
   const { _id } = req.user;
   const orders = await Order.find({ userId: _id });
+  if (!orders.length) return res.status(404).send('No orders available');
   res.send(orders);
 });
 

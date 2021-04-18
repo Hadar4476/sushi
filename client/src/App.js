@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import { Route, Switch } from 'react-router';
+import { Route, Switch, useLocation } from 'react-router';
 import { connect } from 'react-redux';
 import { SignInContext } from './context/signInContext';
 import asyncComponent from './hoc/asyncComponent';
@@ -23,22 +23,42 @@ const asyncMenu = asyncComponent(() => import('./components/Menu/Menu'));
 const tokenKey = 'token';
 
 const App = (props) => {
-  const { isTokenValid } = useContext(SignInContext);
   const { user, getAuthenticatedUserHandler } = props;
 
+  const { isTokenValid } = useContext(SignInContext);
+
+  const { pathname } = useLocation();
+
   const userToken = localStorage.getItem(tokenKey);
+
   useEffect(() => {
     if (userToken) {
       getAuthenticatedUserHandler();
-      document.body.style.background = 'white';
-      $('nav').attr('style', 'background:white;border-bottom:1px solid silver');
-      $('footer').attr('style', 'color:black');
-    } else {
-      document.body.style.background = '';
-      $('nav').attr('style', 'background:transparent;border-bottom: none');
-      $('footer').attr('style', 'color:white');
     }
-  }, [userToken, getAuthenticatedUserHandler, isTokenValid]);
+  }, [userToken, getAuthenticatedUserHandler]);
+
+  useEffect(() => {
+    const bodyElement = document.body;
+    const navElement = $('nav');
+    const footerElement = $('footer');
+    let bodyBackground = '';
+    let navElementStyle = 'border-bottom: none';
+    let footerElementStyle = 'color:white';
+    if (userToken) {
+      bodyBackground = 'white';
+      navElementStyle = 'border-bottom: 2px solid silver';
+      footerElementStyle = 'color:black';
+    }
+    if (pathname === '/my-orders') {
+      bodyBackground = '';
+      navElementStyle =
+        'background-color:white;border-bottom: 2px solid silver';
+      footerElementStyle = 'color:white';
+    }
+    bodyElement.style.background = bodyBackground;
+    navElement.attr('style', navElementStyle);
+    footerElement.attr('style', footerElementStyle);
+  }, [userToken, getAuthenticatedUserHandler, isTokenValid, pathname]);
 
   let welcomePage = <Route exact path='/' component={Home} />;
   if (userToken) {

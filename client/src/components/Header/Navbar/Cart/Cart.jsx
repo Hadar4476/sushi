@@ -17,7 +17,6 @@ const animateCSSClasses = {
 
 const Cart = (props) => {
   const {
-    user,
     cart,
     displayModal,
     onHideCart,

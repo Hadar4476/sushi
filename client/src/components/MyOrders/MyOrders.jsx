@@ -6,8 +6,10 @@ import * as actions from '../../store/actions';
 
 import classes from './MyOrders.module.css';
 
+import MyOrdersItem from './MyOrdersItem/MyOrdersItem';
+
 const MyOrders = (props) => {
-  const { myOrders, onInitMyOrders } = props;
+  const { user, myOrders, onInitMyOrders, error, loading } = props;
 
   const [myOrdersState, setMyOrdersState] = useState([]);
 
@@ -19,7 +21,7 @@ const MyOrders = (props) => {
 
   useEffect(() => {
     if (myOrders.length) {
-      setMyOrdersState(myOrders);
+      setMyOrdersState(myOrders.reverse());
     }
   }, [myOrders]);
 
@@ -27,25 +29,54 @@ const MyOrders = (props) => {
     history.push('/');
   };
 
-  let content = (
-    <div className={classes.Empty}>
-      <h2>Looks like your orders history is empty</h2>
-      <p>Make an order</p>
-      <div className={classes.GoBackIcon} onClick={navigateToHome}>
-        <i className='fas fa-plus'></i>
+  let errorMessage = null;
+  if (error || (!myOrders.length && !loading)) {
+    errorMessage = (
+      <div className={classes.Empty}>
+        <h2>Looks like your orders history is empty</h2>
+        <p>Make an order</p>
+        <div className={classes.GoBackIcon} onClick={navigateToHome}>
+          <i className='fas fa-plus'></i>
+        </div>
       </div>
-    </div>
-  );
-  if (myOrdersState.length) {
-    content = <div className={classes.MyOrders}></div>;
+    );
   }
 
-  return content;
+  let myOrdersElements = null;
+  if (myOrdersState.length) {
+    myOrdersElements = myOrdersState.map((item) => (
+      <MyOrdersItem
+        key={item._id}
+        address={item.address}
+        cart={item.cart}
+        createdAt={item.createdAt}
+        name={item.name}
+        phone={item.phone}
+        totalPrice={item.totalPrice}
+      />
+    ));
+  }
+
+  let headerContent = null;
+  if (user && user.username) {
+    headerContent = <h1>{user.username}'s Orders</h1>;
+  }
+
+  return (
+    <div className={classes.MyOrders}>
+      <div className={classes.Header}>{headerContent}</div>
+      {errorMessage}
+      <div className={classes.Body}>{myOrdersElements}</div>
+    </div>
+  );
 };
 
 const mapStateToProps = (state) => {
   return {
     myOrders: state.myOrders.myOrders,
+    error: state.myOrders.error,
+    loading: state.myOrders.loading,
+    user: state.user.user,
   };
 };
 

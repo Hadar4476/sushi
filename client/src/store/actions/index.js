@@ -36,6 +36,12 @@ export {
   updateContactForm,
   submitOrder,
   submitOrderSuccess,
+  orderAgain,
 } from './orderManager';
 
-export { initMyOrders, initMyOrdersSuccess } from './myOrders';
+export {
+  initMyOrders,
+  initMyOrdersSuccess,
+  initMyOrdersFail,
+  addOrderToMyOrders,
+} from './myOrders';

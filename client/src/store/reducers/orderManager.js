@@ -150,6 +150,10 @@ const submitOrderSuccess = (state, action) => {
   });
 };
 
+const orderAgain = (state, action) => {
+  return updateObject(state, { cart: action.cart });
+};
+
 const reducer = (state = initalState, action) => {
   switch (action.type) {
     case actionTypes.SELECT_DISH:
@@ -182,6 +186,8 @@ const reducer = (state = initalState, action) => {
       return updateContactForm(state, action);
     case actionTypes.SUBMIT_ORDER_SUCCESS:
       return submitOrderSuccess(state, action);
+    case actionTypes.ORDER_AGAIN:
+      return orderAgain(state, action);
     default:
       return state;
   }
