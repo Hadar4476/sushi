@@ -9,7 +9,9 @@ import SignUp from '../SignUp/SignUp';
 
 const Home = () => {
   const { onDisplaySignUpModal } = useContext(SignUpContext);
-  const { onDisplaySignInModal } = useContext(SignInContext);
+  const { onDisplaySignInModal, onSignInFormSubmit } = useContext(
+    SignInContext
+  );
 
   const onNavToSignUpHanlder = () => {
     onDisplaySignUpModal();
@@ -18,6 +20,15 @@ const Home = () => {
   const onNavToSignInHanlder = () => {
     onDisplaySignInModal();
   };
+
+  const onSignInAsGuestHandler = () => {
+    const guest = {
+      email: 'guest@gmail.com',
+      password: '123456',
+    };
+    onSignInFormSubmit(guest);
+  };
+
   return (
     <div className={classes.Home}>
       <div className={classes.Info}>
@@ -29,6 +40,12 @@ const Home = () => {
         </h2>
       </div>
       <div className={classes.Navigation}>
+        <div
+          className={classes.GuestNavigation}
+          onClick={onSignInAsGuestHandler}
+        >
+          <p>Try As Guest</p>
+        </div>
         <div
           className={classes.SignUpNavigation}
           onClick={onNavToSignUpHanlder}
