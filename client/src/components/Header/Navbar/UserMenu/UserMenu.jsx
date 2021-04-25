@@ -56,7 +56,7 @@ const UserMenu = (props) => {
 
           <div className={classes.Body}>
             <div onClick={navigateToMyGallery}>
-              <i className='bx bxs-image'></i>
+              <i class='fas fa-concierge-bell'></i>
               <button>My Orders</button>
             </div>
           </div>
