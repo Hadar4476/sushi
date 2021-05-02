@@ -25,6 +25,7 @@ router.post('/', auth, async (req, res) => {
     cart: cart,
     createdAt: now,
   }).save();
+  console.log(newOrder);
   res.send(newOrder);
 });
 

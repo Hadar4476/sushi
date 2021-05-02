@@ -105,6 +105,7 @@ const hideCart = (state, action) => {
     displayCart: false,
     displayContactForm: false,
     contactForm: resetFormModal,
+    displayOrderCompleteMessage: false,
   });
 };
 
@@ -144,9 +145,11 @@ const submitOrderSuccess = (state, action) => {
   }
   return updateObject(state, {
     contactForm: resetFormModal,
-    displayContactForm: false,
-    displayCart: false,
-    cart: [],
+    displayOrderCompleteMessage: true,
+    loading: false,
+    // displayContactForm: false,
+    // displayCart: false,
+    // cart: [],
   });
 };
 

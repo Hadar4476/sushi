@@ -7,6 +7,7 @@ import * as actions from '../../../../../store/actions';
 import classes from './ContactForm.module.css';
 
 import Input from '../../../../UI/Input/Input';
+import Spinner from '../../../../UI/Spinner/Spinner';
 
 const ContactForm = (props) => {
   const {
@@ -14,6 +15,7 @@ const ContactForm = (props) => {
     contactForm,
     onUpdateContactForm,
     cart,
+    onStartLoading,
     onSubmitOrder,
   } = props;
 
@@ -43,7 +45,10 @@ const ContactForm = (props) => {
     for (let key in contactForm) {
       order[key] = contactForm[key].value;
     }
-    onSubmitOrder(order);
+    onStartLoading();
+    setTimeout(() => {
+      onSubmitOrder(order);
+    }, 2000);
   };
 
   const formElementsArray = [];
@@ -80,6 +85,7 @@ const ContactForm = (props) => {
     content = (
       <form onSubmit={onFormSubmit} className={classes.ContactForm}>
         <div className={classes.FormGroupWrapper}>{form}</div>
+        <Spinner />
         <div className={classes.Confirm}>
           <button disabled={!isFormValid}>Confirm</button>
         </div>
@@ -101,6 +107,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onUpdateContactForm: (updatedForm) =>
       dispatch(actions.updateContactForm(updatedForm)),
+    onStartLoading: () => dispatch(actions.startLoading()),
     onSubmitOrder: (order) => dispatch(actions.submitOrder(order)),
   };
 };

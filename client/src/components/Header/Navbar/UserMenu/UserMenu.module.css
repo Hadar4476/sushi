@@ -21,11 +21,6 @@
   animation-duration: 0.1s;
 }
 
-.UserMenu *::selection {
-  color: white;
-  background-color: #cb3066;
-}
-
 @keyframes display {
   0% {
     height: 0%;
