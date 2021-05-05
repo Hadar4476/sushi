@@ -15,5 +15,5 @@ How to install
 13. navigate back to the sushi folder with: cd..
 14. run this line: nodemon app to start Node server
 15. open new terminal window and navigate to the client folder with: cd sushi/client
-16. got to src folder -> myaxios.js, change const url = 'https://dgallery.herokuapp.com'; to const url = 'http://localhost:3006';
+16. got to src folder -> myaxios.js, change const url = 'https://hadar-sushi-project.herokuapp.com'; to const url = 'http://localhost:3006';
 17. to start the website run this line: npm start
